@@ -47,14 +47,23 @@ export class AppComponent {
 }
 
 
-  
+  showError=false;
   loadingAPI(){
+    if(this.formValue.value.username=='')
+    {
+      this.router.navigate([''])
+      .then(() => {
+        window.location.reload();
+      });
+    }
+    else{
     this.showLoading=true;
     this.showSearch=false;
     this.showList=false;
     setTimeout(()=>{                          
       this.getUserByName();
     }, 5000);
+  }
     
   }
    
